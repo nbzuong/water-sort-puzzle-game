@@ -86,6 +86,7 @@ def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[], priority
     if tubeHeight is None:
         tubeHeight = max(len(t) for t in grid)
     visitedPositions.add(gridToCanonicalString(grid))
+    queue = []
     for i in range(len(grid)):
         tube = grid[i]
         for j in range(len(grid)):
@@ -104,14 +105,10 @@ def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[], priority
                     visitedPositions.add(gridToCanonicalString(grid2))
     while priorityQueue:
         currentGrid = heapq.heappop(priorityQueue)[1]
-        if isSolved(currentGrid, tubeHeight):
+        solved = solveGrid(currentGrid, tubeHeight, visitedPositions, answer, priorityQueue)
+        if solved:
             answer.append(printGridToString(currentGrid))
             return True
-        if(gridToCanonicalString(currentGrid) not in visitedPositions):
-            solved = solveGrid(currentGrid, tubeHeight, visitedPositions, answer, priorityQueue)
-            if solved:
-                answer.append(printGridToString(currentGrid))
-                return answer
     return False
 
 if __name__ == "__main__":
