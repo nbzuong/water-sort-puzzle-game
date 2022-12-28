@@ -82,7 +82,6 @@ def getHeuristic(grid, tubeHeight):
             heuristic += len(tube) - tubeHeight
     return heuristic
 
-
 def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[], priorityQueue=[]):
     if tubeHeight is None:
         tubeHeight = max(len(t) for t in grid)
@@ -105,10 +104,14 @@ def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[], priority
                     visitedPositions.add(gridToCanonicalString(grid2))
     while priorityQueue:
         currentGrid = heapq.heappop(priorityQueue)[1]
-        solved = solveGrid(currentGrid, tubeHeight, visitedPositions, answer, priorityQueue)
-        if solved:
+        if isSolved(currentGrid, tubeHeight):
             answer.append(printGridToString(currentGrid))
             return True
+        if(gridToCanonicalString(currentGrid) not in visitedPositions):
+            solved = solveGrid(currentGrid, tubeHeight, visitedPositions, answer, priorityQueue)
+            if solved:
+                answer.append(printGridToString(currentGrid))
+                return answer
     return False
 
 if __name__ == "__main__":
