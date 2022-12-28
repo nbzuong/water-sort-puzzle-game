@@ -86,7 +86,6 @@ def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[], priority
     if tubeHeight is None:
         tubeHeight = max(len(t) for t in grid)
     visitedPositions.add(gridToCanonicalString(grid))
-    queue = []
     for i in range(len(grid)):
         tube = grid[i]
         for j in range(len(grid)):
