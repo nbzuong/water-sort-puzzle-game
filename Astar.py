@@ -79,8 +79,7 @@ def getHeuristic(grid, tubeHeight):
     for tube in grid:
         if len(tube) > tubeHeight:
             heuristic += len(tube) - tubeHeight
-        else: heuristic += tubeHeight - len(tube)
-    return heuristic
+        return heuristic
 
 def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[], priorityQueue=[]):
     if tubeHeight is None:
