@@ -74,12 +74,12 @@ def gridToCanonicalString(grid):
     sortedTubeStrings = sorted(tubeStrings)
     return ';'.join(sortedTubeStrings)
 
-
 def getHeuristic(grid, tubeHeight):
     heuristic = 0
     for tube in grid:
         if len(tube) > tubeHeight:
             heuristic += len(tube) - tubeHeight
+        else: heuristic += tubeHeight - len(tube)
     return heuristic
 
 def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[], priorityQueue=[]):
