@@ -74,8 +74,6 @@ def gridToCanonicalString(grid):
     return ';'.join(sortedTubeStrings)
 
 
-
-
 def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[]):
     if tubeHeight is None:
         tubeHeight = max(len(t) for t in grid)

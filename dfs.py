@@ -73,6 +73,7 @@ def gridToCanonicalString(grid):
     sortedTubeStrings = sorted(tubeStrings)
     return ';'.join(sortedTubeStrings)
 
+
 def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[]):
     if tubeHeight is None:
         tubeHeight = max(len(t) for t in grid)
@@ -100,6 +101,8 @@ def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[]):
                         answer.append(printGridToString(grid2))
                         return True
     return False
+
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="(Attempt to) solve a ball sort puzzle")
