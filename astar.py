@@ -2,7 +2,6 @@ import argparse
 import copy
 import json
 import time
-from queue import PriorityQueue
 
 def isValidGrid(grid):
     numTubes = len(grid)
