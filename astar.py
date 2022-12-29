@@ -74,21 +74,12 @@ def gridToCanonicalString(grid):
     sortedTubeStrings = sorted(tubeStrings)
     return ';'.join(sortedTubeStrings)
 
-def getHeuristicDistance(grid, tubeHeight):
-    totalDistance = 0
-    for i in range(len(grid)):
-        tube = grid[i]
-        for j in range(len(tube)):
-            if j < tubeHeight:
-                totalDistance += (tubeHeight - j)
-    return totalDistance
-
 
 def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[]):
     if tubeHeight is None:
         tubeHeight = max(len(t) for t in grid)
     visitedPositions.add(gridToCanonicalString(grid))
-    queue = PriorityQueue()
+    queue = []
     for i in range(len(grid)):
         tube = grid[i]
         for j in range(len(grid)):
@@ -102,16 +93,26 @@ def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[]):
                     answer.append(printGridToString(grid2))
                     return True
                 if(gridToCanonicalString(grid2) not in visitedPositions):
-                    priority = getHeuristicDistance(grid2, tubeHeight)
-                    queue.put((priority, grid2))
+                    queue.append((grid2, getHeuristic(grid2, tubeHeight)))
                     visitedPositions.add(gridToCanonicalString(grid2))
+    queue.sort(key=lambda tup: tup[1])
     while queue:
-        (priority, currentGrid) = queue.get()
+        currentGrid = queue.pop(0)[0]
         solved = solveGrid(currentGrid, tubeHeight, visitedPositions, answer)
         if solved:
             answer.append(printGridToString(currentGrid))
             return True
     return False
+
+def getHeuristic(grid, tubeHeight):
+    # heuristic is the number of balls that are not in the correct tube
+    totalBalls = (tubeHeight * len(grid)) - (len(grid) - 2)
+    numCorrectBalls = 0
+    for tube in grid:
+        if len(tube) > 0:
+            if tube.count(tube[0]) == len(tube):
+                numCorrectBalls += len(tube)
+    return totalBalls - numCorrectBalls
     
 
 
