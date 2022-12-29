@@ -2,6 +2,7 @@ import argparse
 import copy
 import json
 import time
+from queue import PriorityQueue
 
 def isValidGrid(grid):
     numTubes = len(grid)
@@ -73,4 +74,72 @@ def gridToCanonicalString(grid):
     sortedTubeStrings = sorted(tubeStrings)
     return ';'.join(sortedTubeStrings)
 
+def getHeuristicDistance(grid, tubeHeight):
+    totalDistance = 0
+    for i in range(len(grid)):
+        tube = grid[i]
+        for j in range(len(tube)):
+            if j < tubeHeight:
+                totalDistance += (tubeHeight - j)
+    return totalDistance
 
+
+def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[]):
+    if tubeHeight is None:
+        tubeHeight = max(len(t) for t in grid)
+    visitedPositions.add(gridToCanonicalString(grid))
+    queue = PriorityQueue()
+    for i in range(len(grid)):
+        tube = grid[i]
+        for j in range(len(grid)):
+            if i == j:
+                continue
+            candidateTube = grid[j]
+            if isMoveValid(tubeHeight, tube, candidateTube):
+                grid2 = copy.deepcopy(grid)
+                grid2[j].append(grid2[i].pop())
+                if(isSolved(grid2, tubeHeight)):
+                    answer.append(printGridToString(grid2))
+                    return True
+                if(gridToCanonicalString(grid2) not in visitedPositions):
+                    priority = getHeuristicDistance(grid2, tubeHeight)
+                    queue.put((priority, grid2))
+                    visitedPositions.add(gridToCanonicalString(grid2))
+    while queue:
+        (priority, currentGrid) = queue.get()
+        solved = solveGrid(currentGrid, tubeHeight, visitedPositions, answer)
+        if solved:
+            answer.append(printGridToString(currentGrid))
+            return True
+    return False
+    
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="(Attempt to) solve a ball sort puzzle")
+    parser.add_argument("json",help="filename of input file (in JSON format)")
+    parser.add_argument("--show-working", dest="working", help="Print out the steps to the solution", action='store_true')
+    args = parser.parse_args()
+    grid = loadGrid(args.json)
+    start = time.time()
+    if not isValidGrid(grid):
+        exit("Invalid grid")
+    if isSolved(grid):
+        print("Grid is already solved")
+        exit()
+    print(printGridToString(grid))
+    print("--")
+    answer = []
+    visitedPositions = set()
+    solved = solveGrid(grid, visitedPositions=visitedPositions, answer=answer)
+    end = time.time()
+    print("Visited "+str(len(visitedPositions))+" positions in "+str(round(end-start, 3))+" seconds")
+    if not solved:
+        print("No solution")
+    else:
+        print("Solved in "+str(len(answer))+" moves")
+        if(args.working):
+            answer.reverse()
+            for step in answer:
+                print(step)
+                print('--')
