@@ -3,6 +3,7 @@ import copy
 import json
 import time
 from queue import PriorityQueue
+import puzzles
 
 def isValidGrid(grid):
     numTubes = len(grid)
@@ -38,7 +39,7 @@ def isSolved(grid, tubeHeight=None):
     return True
 
 def loadGrid(filename):
-    with open(filename) as json_file:
+    with open('puzzles/' + filename) as json_file:
         data = json.load(json_file)
         grid = data['tubes']
         return grid
