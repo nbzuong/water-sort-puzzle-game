@@ -21,15 +21,15 @@ def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
                 continue
             candidateBottle = puzzle[j]
             if someConditions.isMoveValid(bottleHeight, bottle, candidateBottle):
-                grid2 = copy.deepcopy(puzzle)
-                grid2[j].append(grid2[i].pop())
-                if(someConditions.isSolved(grid2, bottleHeight)):
-                    answer.append(someConditions.printPuzzleToString(grid2))
+                bottle2 = copy.deepcopy(puzzle)
+                bottle2[j].append(bottle2[i].pop())
+                if(someConditions.isSolved(bottle2, bottleHeight)):
+                    answer.append(someConditions.printPuzzleToString(bottle2))
                     return True
-                if(someConditions.puzzleToCanonicalString(grid2) not in visitedPositions):
-                    solved = solvePuzzle(grid2, bottleHeight, visitedPositions, answer)
+                if(someConditions.puzzleToCanonicalString(bottle2) not in visitedPositions):
+                    solved = solvePuzzle(bottle2, bottleHeight, visitedPositions, answer)
                     if solved:
-                        answer.append(someConditions.printPuzzleToString(grid2))
+                        answer.append(someConditions.printPuzzleToString(bottle2))
                         return True
     return False
 
