@@ -2,6 +2,7 @@ import argparse
 import random
 import json
 import string
+import puzzles
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a random permutation of balls in tubes")
@@ -32,5 +33,5 @@ if __name__ == "__main__":
     obj = dict()
     obj["tubes"] = grid
 
-    with open(args.json, "w") as json_file:
+    with open(f'puzzles/' +args.json, 'w') as json_file:
         json.dump(obj, json_file, indent=4)
