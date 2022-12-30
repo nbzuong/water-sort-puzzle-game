@@ -4,6 +4,7 @@ import json
 import time
 from queue import PriorityQueue
 import puzzles
+from solutions import astar
 
 def isValidGrid(grid):
     numTubes = len(grid)
