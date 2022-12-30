@@ -2,6 +2,7 @@ import argparse
 import copy
 import json
 import time
+from queue import PriorityQueue
 
 def isValidGrid(grid):
     numTubes = len(grid)
@@ -74,11 +75,12 @@ def gridToCanonicalString(grid):
     return ';'.join(sortedTubeStrings)
 
 
+
 def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[]):
     if tubeHeight is None:
         tubeHeight = max(len(t) for t in grid)
     visitedPositions.add(gridToCanonicalString(grid))
-    queue = []
+    priorityQueue = PriorityQueue()
     for i in range(len(grid)):
         tube = grid[i]
         for j in range(len(grid)):
@@ -92,11 +94,10 @@ def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[]):
                     answer.append(printGridToString(grid2))
                     return True
                 if(gridToCanonicalString(grid2) not in visitedPositions):
-                    queue.append((grid2, getHeuristic(grid2, tubeHeight)))
+                    priorityQueue.put((getHeuristic(grid2, tubeHeight), grid2))
                     visitedPositions.add(gridToCanonicalString(grid2))
-    queue.sort(key=lambda tup: tup[1])
-    while queue:
-        currentGrid = queue.pop(0)[0]
+    while not priorityQueue.empty():
+        currentGrid = priorityQueue.get()[1]
         solved = solveGrid(currentGrid, tubeHeight, visitedPositions, answer)
         if solved:
             answer.append(printGridToString(currentGrid))
