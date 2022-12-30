@@ -3,6 +3,7 @@ import copy
 import json
 import time
 import puzzles
+from solutions import dfs
 
 def isValidGrid(grid):
     numTubes = len(grid)
