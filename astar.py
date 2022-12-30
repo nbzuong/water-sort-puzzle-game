@@ -13,14 +13,14 @@ def isValidPuzzle(puzzle): #to check if the puzzle is valid
     if (numWaters != numWatersRequired):
         print("Puzzle has incorrect number of waters")
         return False
-    freqs = dict()
+    freq = dict()
     for bottle in puzzle:
         for water in bottle:
-            if water not in freqs:
-                freqs[water] = 1
+            if water not in freq:
+                freq[water] = 1
             else:
-                freqs[water] += 1
-    for color,count in freqs.items():
+                freq[water] += 1
+    for color,count in freq.items():
         if count != bottleHeight:
             print("Expected "+str(bottleHeight)+" "+color+" waters, found "+str(count))
             return False
@@ -34,7 +34,7 @@ def isSolved(puzzle, bottleHeight=None):
             # there are 2 bottles must be empty when puzzle is solved
             continue
         elif(len(tube) < bottleHeight):
-            # if there is a bottle is not filled then the puzzle is not solved
+            # if there is a bottle is not full then the puzzle is not solved
             return False
         elif(tube.count(tube[0]) != bottleHeight): 
             # if the number of the same color is not equal to bottle's height then the puzzle is not solved
@@ -53,22 +53,19 @@ def printPuzzleToString(puzzle): #to print bottles
         lines.append(''.join(bottle))
     return("\n".join(lines))
 
-def isMoveValid(tubeHeight, fromTube, candidateTube):
-    # move is valid if the source tube isn't empty,
-    # the destination isn't full,
-    # and the ball at the end of the source tube is the same as the
-    # ball at the end of the destination.
-    # But there are also some optimizations to avoid pointless moves.
-    if len(fromTube) == 0 or len(candidateTube) == tubeHeight:
+def isMoveValid(bottleHeight, fromBottle, candidateBottle):
+    # move is valid if the source bottle isn't empty, the destination isn't full, 
+    # and the water at the end of the source bottle is the same as the water at the end of the destination.
+    if len(fromBottle) == 0 or len(candidateBottle) == bottleHeight:
         return False
-    numFirstColour = fromTube.count(fromTube[0])
-    if numFirstColour == tubeHeight: # tube is full of same colour, don't touch it
+    numFirstColor = fromBottle.count(fromBottle[0])
+    if numFirstColor == bottleHeight: # bottle is full of same color, don't touch it
         return False
-    if len(candidateTube) == 0:
-        if numFirstColour == len(fromTube): # source tube all the same colour, so pointless moving to empty tube
+    if len(candidateBottle) == 0:
+        if numFirstColor == len(fromBottle): # source bottle has all waters with the same color, so pointless moving to empty bottle
             return False
         return True
-    return fromTube[-1] == candidateTube[-1]
+    return fromBottle[-1] == candidateBottle[-1]
 
 def gridToCanonicalString(grid):
     tubeStrings = []
