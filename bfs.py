@@ -74,53 +74,53 @@ def gridToCanonicalString(grid):
     return ';'.join(sortedTubeStrings)
 
 
-def solveGrid(grid, tubeHeight=None, visitedPositions=set(), answer=[]):
-    if tubeHeight is None:
-        tubeHeight = max(len(t) for t in grid)
-    visitedPositions.add(gridToCanonicalString(grid))
+def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
+    if bottleHeight is None:
+        bottleHeight = max(len(t) for t in puzzle)
+    visitedPositions.add(gridToCanonicalString(puzzle))
     queue = []
-    for i in range(len(grid)):
-        tube = grid[i]
-        for j in range(len(grid)):
+    for i in range(len(puzzle)):
+        bottle = puzzle[i]
+        for j in range(len(puzzle)):
             if i == j:
                 continue
-            candidateTube = grid[j]
-            if isMoveValid(tubeHeight, tube, candidateTube):
-                grid2 = copy.deepcopy(grid)
-                grid2[j].append(grid2[i].pop())
-                if(isSolved(grid2, tubeHeight)):
-                    answer.append(printGridToString(grid2))
+            candidateBottle = puzzle[j]
+            if isMoveValid(bottleHeight, bottle, candidateBottle):
+                bottle2 = copy.deepcopy(puzzle)
+                bottle2[j].append(bottle2[i].pop())
+                if(isSolved(bottle2, bottleHeight)):
+                    answer.append(printPuzzleToString(bottle2))
                     return True
-                if(gridToCanonicalString(grid2) not in visitedPositions):
-                    queue.append(grid2)
-                    visitedPositions.add(gridToCanonicalString(grid2))
+                if(gridToCanonicalString(bottle2) not in visitedPositions):
+                    queue.append(bottle2)
+                    visitedPositions.add(gridToCanonicalString(bottle2))
     while queue:
-        currentGrid = queue.pop(0)
-        solved = solveGrid(currentGrid, tubeHeight, visitedPositions, answer)
+        currentPuzzle = queue.pop(0)
+        solved = solvePuzzle(currentPuzzle, bottleHeight, visitedPositions, answer)
         if solved:
-            answer.append(printGridToString(currentGrid))
+            answer.append(printPuzzleToString(currentPuzzle))
             return True
     return False
 
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="(Attempt to) solve a ball sort puzzle")
+    parser = argparse.ArgumentParser(description="(Attempt to) solve a water sort puzzle")
     parser.add_argument("json",help="filename of input file (in JSON format)")
     parser.add_argument("--show-working", dest="working", help="Print out the steps to the solution", action='store_true')
     args = parser.parse_args()
-    grid = loadGrid(args.json)
+    puzzle = loadPuzzle(args.json)
     start = time.time()
-    if not isValidGrid(grid):
-        exit("Invalid grid")
-    if isSolved(grid):
-        print("Grid is already solved")
+    if not isValidPuzzle(puzzle):
+        exit("Invalid puzzle")
+    if isSolved(puzzle):
+        print("Puzzle is already solved")
         exit()
-    print(printGridToString(grid))
+    print(printPuzzleToString(puzzle))
     print("--")
     answer = []
     visitedPositions = set()
-    solved = solveGrid(grid, visitedPositions=visitedPositions, answer=answer)
+    solved = solvePuzzle(puzzle, visitedPositions=visitedPositions, answer=answer)
     end = time.time()
     print("Visited "+str(len(visitedPositions))+" positions in "+str(round(end-start, 3))+" seconds")
     if not solved:
