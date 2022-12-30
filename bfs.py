@@ -4,7 +4,7 @@ import json
 import time
 import puzzles
 
-def isValidPuzzle(puzzle):
+def isValidPuzzle(puzzle): #to check if the puzzle is valid
     numBottles = len(puzzle)
     bottleHeight = max(len(t) for t in puzzle)
     numWaters = sum(len(t) for t in puzzle)
@@ -40,17 +40,16 @@ def isSolved(puzzle, bottleHeight=None):
             return False
     return True
 
-def loadGrid(filename):
+def loadPuzzle(filename):
     with open('puzzles/' + filename) as json_file:
         data = json.load(json_file)
-        grid = data['tubes']
-        return grid
+        puzzle = data['bottles']
+        return puzzle
 
-def printGridToString(grid):
+def printPuzzleToString(puzzle): #to print bottles
     lines = []
-    for tube in grid:
-        #print(tube)
-        lines.append(''.join(tube))
+    for bottle in puzzle:
+        lines.append(''.join(bottle))
     return("\n".join(lines))
 
 def isMoveValid(tubeHeight, fromTube, candidateTube):
