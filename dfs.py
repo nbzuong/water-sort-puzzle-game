@@ -4,36 +4,39 @@ import json
 import time
 import puzzles
 
-def isValidGrid(grid):
-    numTubes = len(grid)
-    tubeHeight = max(len(t) for t in grid)
-    numBalls = sum(len(t) for t in grid)
-    numBallsRequired = (numTubes-2)*tubeHeight
-    if (numBalls != numBallsRequired):
-        print("Grid has incorrect number of balls")
+def isValidPuzzle(puzzle):
+    numBottles = len(puzzle)
+    bottleHeight = max(len(t) for t in puzzle)
+    numWaters = sum(len(t) for t in puzzle)
+    numWatersRequired = (numBottles-2)*bottleHeight
+    if (numWaters != numWatersRequired):
+        print("Puzzle has incorrect number of waters")
         return False
     freqs = dict()
-    for tube in grid:
-        for ball in tube:
-            if ball not in freqs:
-                freqs[ball] = 1
+    for bottle in puzzle:
+        for water in bottle:
+            if water not in freqs:
+                freqs[water] = 1
             else:
-                freqs[ball] += 1
-    for colour,count in freqs.items():
-        if count != tubeHeight:
-            print("Expected "+str(tubeHeight)+" "+colour+" balls, found "+str(count))
+                freqs[water] += 1
+    for color,count in freqs.items():
+        if count != bottleHeight:
+            print("Expected "+str(bottleHeight)+" "+color+" waters, found "+str(count))
             return False
     return True
 
-def isSolved(grid, tubeHeight=None):
-    if tubeHeight is None:
-        tubeHeight = max(len(t) for t in grid)
-    for tube in grid:
-        if(len(tube) == 0):
+def isSolved(puzzle, bottleHeight=None):
+    if bottleHeight is None:
+        bottleHeight = max(len(t) for t in puzzle)
+    for tube in puzzle:
+        if(len(tube) == 0): 
+            # there are 2 bottles must be empty when puzzle is solved
             continue
-        elif(len(tube) < tubeHeight):
+        elif(len(tube) < bottleHeight):
+            # if there is a bottle is not filled then the puzzle is not solved
             return False
-        elif(tube.count(tube[0]) != tubeHeight): # elements in tube don't all match first elem
+        elif(tube.count(tube[0]) != bottleHeight): 
+            # if the number of the same color is not equal to bottle's height then the puzzle is not solved
             return False
     return True
 
