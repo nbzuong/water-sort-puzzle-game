@@ -6,8 +6,8 @@ import someConditions
 
 def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
     if bottleHeight is None: 
-    # If no bottleHeight is given, it sets the bottleHeight to the maximum length of the puzzle.
         bottleHeight = max(len(t) for t in puzzle)
+    # If no bottleHeight is given, it sets the bottleHeight to the maximum length of the puzzle.
     visitedPositions.add(someConditions.puzzleToCanonicalString(puzzle))
     # This adds the puzzle to the set of visited positions, in canonical string form.
     queue = []
