@@ -34,4 +34,4 @@ if __name__ == "__main__":
     obj["bottles"] = puzzle
 
     with open(f'puzzles/' +args.json, 'w') as json_file:
-        json.dump(obj, json_file, indent=4)
+        json.dump(obj, json_file, indent=3)
