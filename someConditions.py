@@ -8,7 +8,8 @@ def loadPuzzle(filename):
         return puzzle
 
 
-def isValidPuzzle(puzzle): #to check if the puzzle is valid
+def isValidPuzzle(puzzle): 
+    # To check if the puzzle is valid.
     numBottles = len(puzzle)
     bottleHeight = max(len(t) for t in puzzle)
     numWaters = sum(len(t) for t in puzzle)
@@ -34,32 +35,33 @@ def isSolved(puzzle, bottleHeight=None):
         bottleHeight = max(len(t) for t in puzzle)
     for tube in puzzle:
         if(len(tube) == 0): 
-            # there are 2 bottles must be empty when puzzle is solved
+            # There are 2 bottles must be empty when puzzle is solved.
             continue
         elif(len(tube) < bottleHeight):
-            # if there is a bottle is not full then the puzzle is not solved
+            # If there is a bottle is not full then the puzzle is not solved.
             return False
         elif(tube.count(tube[0]) != bottleHeight): 
-            # if the number of the same color is not equal to bottle's height then the puzzle is not solved
+            # If the number of the same color is not equal to bottle's height then the puzzle is not solved.
             return False
     return True
 
-def printPuzzleToString(puzzle): #to print bottles
+def printPuzzleToString(puzzle): 
+    # To print bottles.
     lines = []
     for bottle in puzzle:
         lines.append(''.join(bottle))
     return("\n".join(lines))
 
 def isMoveValid(bottleHeight, fromBottle, candidateBottle):
-    # move is valid if the source bottle isn't empty, the destination isn't full, 
+    # Move is valid if the source bottle isn't empty, the destination isn't full, 
     # and the water at the end of the source bottle is the same as the water at the end of the destination.
     if len(fromBottle) == 0 or len(candidateBottle) == bottleHeight:
         return False
     numFirstColor = fromBottle.count(fromBottle[0])
-    if numFirstColor == bottleHeight: # bottle is full of same color, don't touch it
+    if numFirstColor == bottleHeight: # Bottle is full of same color, don't touch it.
         return False
     if len(candidateBottle) == 0:
-        if numFirstColor == len(fromBottle): # source bottle has all waters with the same color, so pointless moving to empty bottle
+        if numFirstColor == len(fromBottle): # Source bottle has all waters with the same color, so pointless moving to empty bottle.
             return False
         return True
     return fromBottle[-1] == candidateBottle[-1]
