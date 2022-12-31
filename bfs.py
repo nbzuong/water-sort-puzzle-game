@@ -19,14 +19,14 @@ def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
                 continue
             candidateBottle = puzzle[j]
             if someConditions.isMoveValid(bottleHeight, bottle, candidateBottle):
-                bottle2 = copy.deepcopy(puzzle)
-                bottle2[j].append(bottle2[i].pop())
-                if(someConditions.isSolved(bottle2, bottleHeight)):
-                    answer.append(someConditions.printPuzzleToString(bottle2))
+                puzzle2 = copy.deepcopy(puzzle)
+                puzzle2[j].append(puzzle2[i].pop())
+                if(someConditions.isSolved(puzzle2, bottleHeight)):
+                    answer.append(someConditions.printPuzzleToString(puzzle2))
                     return True
-                if(someConditions.puzzleToCanonicalString(bottle2) not in visitedPositions):
-                    queue.append(bottle2)
-                    visitedPositions.add(someConditions.puzzleToCanonicalString(bottle2))
+                if(someConditions.puzzleToCanonicalString(puzzle2) not in visitedPositions):
+                    queue.append(puzzle2)
+                    visitedPositions.add(someConditions.puzzleToCanonicalString(puzzle2))
     # This loop iterates through the puzzle and checks if any moves are valid. 
     # If a move is valid, it will make the move and check if the puzzle is solved. 
     # If the puzzle is solved, it will add the solution to the answer and return True. 
