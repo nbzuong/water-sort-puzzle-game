@@ -47,7 +47,7 @@ def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
 
 def getHeuristic(puzzle, bottleHeight):
     # heuristic is the number of waters that are not in the correct bottle
-    totalWaters = (bottleHeight * len(puzzle)) - (len(puzzle) - 2)
+    totalWaters = bottleHeight*(len(puzzle) - 2)
     numCorrectWaters = 0
     for bottle in puzzle:
         if len(bottle) > 0:
