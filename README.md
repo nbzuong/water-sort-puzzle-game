@@ -43,7 +43,7 @@ python xxx.py xxxx.json
 
 - xxxx is the json file name of the puzzle you want to solve.
 
-If you want to show the working process, use this via command line:
+If you want to show the working process, use:
 
 ``` 
 python xxx.py xxxx.json --show-working 
