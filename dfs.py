@@ -33,8 +33,11 @@ def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
     # Then check if the move is valid using the isMoveValid function from someConditions.
     # If isMoveValid is true, create a deep copy of the puzzle, and remove the last element from the current bottle and adds it to the candidateBottle.
     # After that move, check if the puzzle is solved using the isSolved function from someConditions.
-    # Then 
+    # Then check if the puzzle is in the set of visited positions, in canonical string form.
+    # Call the solvePuzzle recursively with the updated puzzle, bottleHeight, visitedPositions, and answer.
+    # Append the puzzle to the answer list, then return True if the puzzle is solved.
     return False
+    # Else return False if the puzzle is not solved.
 
 
 
