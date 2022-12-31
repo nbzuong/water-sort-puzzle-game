@@ -39,6 +39,11 @@ You can solve a puzzle in 'puzzles' folder via command in this project directory
 
 - xxxx is the json file name of the puzzle you want to solve.
 
+If you want to show the working process, use this instead:
+
+``` python xxx.py xxxx.json --show-working ```
+
+
 
 
 
