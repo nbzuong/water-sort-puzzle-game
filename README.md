@@ -52,7 +52,7 @@ python xxx.py xxxx.json --show-working
 ### Example
 #### Puzzle 
 
-This puzzle has 4 bottles that can contain 3 blocks of water, 2 is full and 2 is empty.
+This puzzle has 4 bottles that can contain 3 blocks of water, 2 bottles are full and 2 bottles are empty.
 
 The same letters represent the same color.
 
