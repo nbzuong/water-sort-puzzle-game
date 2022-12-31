@@ -89,14 +89,6 @@ baa
 --
 Visited 10 positions in 0.001 seconds
 Solved in 6 moves
-PS C:\Users\dnb02\Documents\GitHub\water-sort-puzzle-game> python astar.py ex.json --show-working
-abb
-baa
-
-
---
-Visited 10 positions in 0.001 seconds
-Solved in 6 moves
 ab
 baa
 b
