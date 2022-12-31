@@ -25,6 +25,8 @@ You can generate a new puzzle via command in this project directory by using:
     
 - xxxxx is the name of json file in which we save the puzzle.
 
+After generated, the puzzle is saved in the folder 'puzzles'.
+
 
 
 
