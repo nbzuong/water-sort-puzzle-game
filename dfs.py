@@ -8,12 +8,9 @@ import someConditions
 def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
     if bottleHeight is None:
         bottleHeight = max(len(t) for t in puzzle)
-    # visitedPositions keeps track of all the states of the grid we have considered
-    # to make sure we don't go round in circles
-    # canonical (ordered) string representation of the grid means
-    # that two grids that differ only by the order of the tubes are
-    # considered as the same position
+    # If no bottleHeight is given, it sets the bottleHeight to the maximum length of the puzzle.
     visitedPositions.add(someConditions.puzzleToCanonicalString(puzzle))
+    # This adds the puzzle to the set of visited positions, in canonical string form.
     for i in range(len(puzzle)):
         bottle = puzzle[i]
         for j in range(len(puzzle)):
@@ -21,16 +18,22 @@ def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
                 continue
             candidateBottle = puzzle[j]
             if someConditions.isMoveValid(bottleHeight, bottle, candidateBottle):
-                bottle2 = copy.deepcopy(puzzle)
-                bottle2[j].append(bottle2[i].pop())
-                if(someConditions.isSolved(bottle2, bottleHeight)):
-                    answer.append(someConditions.printPuzzleToString(bottle2))
+                puzzle2 = copy.deepcopy(puzzle)
+                puzzle2[j].append(puzzle2[i].pop())
+                if(someConditions.isSolved(puzzle2, bottleHeight)):
+                    answer.append(someConditions.printPuzzleToString(puzzle2))
                     return True
-                if(someConditions.puzzleToCanonicalString(bottle2) not in visitedPositions):
-                    solved = solvePuzzle(bottle2, bottleHeight, visitedPositions, answer)
+                if(someConditions.puzzleToCanonicalString(puzzle2) not in visitedPositions):
+                    solved = solvePuzzle(puzzle2, bottleHeight, visitedPositions, answer)
                     if solved:
-                        answer.append(someConditions.printPuzzleToString(bottle2))
+                        answer.append(someConditions.printPuzzleToString(puzzle2))
                         return True
+    # Two for loops loop through the puzzle and 
+    # set bottle and candidateBottle variables to the current bottle and the bottle to be compared.
+    # Then check if the move is valid using the isMoveValid function from someConditions.
+    # If isMoveValid is true, create a deep copy of the puzzle, and remove the last element from the current bottle and adds it to the candidateBottle.
+    # After that move, check if the puzzle is solved using the isSolved function from someConditions.
+    # Then 
     return False
 
 
