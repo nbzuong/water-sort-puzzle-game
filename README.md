@@ -79,7 +79,11 @@ Bottle here is similar to stack, the last element is the water on the top of the
 
 #### Solution
 
-Solution of the above puzzle solved by A* algorithm
+Solution of the above puzzle solved by A* algorithm.
+
+Each line represents a bottle, empty lines represent empty bottles.
+
+
 
 ```
 abb
@@ -119,6 +123,13 @@ aaa
 bbb
 
 --
+```
+
+# Reference
+
+```
+https://github.com/tjwood100/ball-sort-puzzle-solver
+
 ```
 
 
