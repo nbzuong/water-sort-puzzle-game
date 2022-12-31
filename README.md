@@ -61,16 +61,8 @@ Bottle here is similar to stack, the last element is the water on the top of the
 ```
 {
    "bottles": [
-      [
-         "a",
-         "b",
-         "b"
-      ],
-      [
-         "b",
-         "a",
-         "a"
-      ],
+      ["a", "b", "b"],
+      ["b", "a", "a"],
       [],
       []
    ]
