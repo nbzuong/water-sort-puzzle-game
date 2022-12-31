@@ -83,7 +83,7 @@ Solution of the above puzzle solved by A* algorithm.
 
 Each line represents a bottle, empty lines represent empty bottles.
 
-
+Each element of the bottle from bottom to top is represented in a line from left to right.
 
 ```
 abb
