@@ -29,7 +29,7 @@ python generator.py xxx xxxx xxxxx.json
 
 After generated, the puzzle is saved in the folder 'puzzles'.
 
-#### The solver
+#### The puzzle solver
 You can solve a puzzle in 'puzzles' folder via command in this project directory by using:
 
 ``` 
