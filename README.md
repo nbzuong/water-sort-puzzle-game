@@ -37,6 +37,8 @@ You can solve a puzzle in 'puzzles' folder via command in this project directory
     - bfs.py is using Breadth-first search algorithm.
     - dfs.py is using Depth-first search algorithm.
 
+- xxxx is the json file name of the puzzle you want to solve.
+
 
 
 
