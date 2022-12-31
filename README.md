@@ -19,13 +19,13 @@ You can generate a new puzzle via command in this project directory by using:
 
 ``` python generator.py xxx xxxx xxxxx.json ```
     
-    - xxx is the number of bottles.
+- xxx is the number of bottles.
     
-    - xxxx is the number of waters in one bottle.
+- xxxx is the number of waters in one bottle.
     
-    - xxxxx is the name of json file in which we save the puzzle.
+- xxxxx is the name of json file in which we save the puzzle.
 
-    
+
 
 
 
