@@ -29,7 +29,8 @@ def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
                     priorityQueue.put((getHeuristic(bottle2, bottleHeight), bottle2))
                     visitedPositions.add(someConditions.puzzleToCanonicalString(bottle2))
     # This code loops through each bottle in the puzzle and comparing it to every other bottle in the puzzle. 
-    # If the move is valid, it creates a deep copy of the puzzle and appends the bottle it was comparing to the bottle it was looping through. 
+    # If the move is valid, it creates a deep copy of the puzzle 
+    # and appends the bottle it was comparing to the bottle it was looping through. 
     # It then checks if the puzzle is solved. 
     # If the puzzle is not solved, it adds it to a priority queue and adds it to the list of visited positions.
     while not priorityQueue.empty():
