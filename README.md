@@ -125,7 +125,7 @@ bbb
 --
 ```
 
-# Reference
+# List of reference
 
 ```
 https://github.com/tjwood100/ball-sort-puzzle-solver
