@@ -5,10 +5,13 @@ import someConditions
 
 
 def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
-    if bottleHeight is None:
+    if bottleHeight is None: 
+    # If no bottleHeight is given, it sets the bottleHeight to the maximum length of the puzzle.
         bottleHeight = max(len(t) for t in puzzle)
     visitedPositions.add(someConditions.puzzleToCanonicalString(puzzle))
+    # This adds the puzzle to the set of visited positions, in canonical string form.
     queue = []
+    # This creates an empty queue, which will be used to store puzzles that need to be evaluated.
     for i in range(len(puzzle)):
         bottle = puzzle[i]
         for j in range(len(puzzle)):
@@ -24,13 +27,21 @@ def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
                 if(someConditions.puzzleToCanonicalString(bottle2) not in visitedPositions):
                     queue.append(bottle2)
                     visitedPositions.add(someConditions.puzzleToCanonicalString(bottle2))
+    # This loop iterates through the puzzle and checks if any moves are valid. 
+    # If a move is valid, it will make the move and check if the puzzle is solved. 
+    # If the puzzle is solved, it will add the solution to the answer and return True. 
+    # If the puzzle is not solved, it will add the puzzle to the queue if it has not already been visited.
     while queue:
         currentPuzzle = queue.pop(0)
         solved = solvePuzzle(currentPuzzle, bottleHeight, visitedPositions, answer)
         if solved:
             answer.append(someConditions.printPuzzleToString(currentPuzzle))
             return True
+    # This loop pops the first puzzle from the queue and attempts to solve it. 
+    # If the puzzle is solved, it will add the solution to the answer and return True. 
+    # If the puzzle is not solved, it will call the solvePuzzle function again with the current puzzle.
     return False
+    # This returns False if the puzzle is not solved after all moves have been evaluated.
 
 
 
