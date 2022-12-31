@@ -52,7 +52,7 @@ python xxx.py xxxx.json --show-working
 ### Example
 #### Puzzle 
 
-A puzzle has 4 bottles that can contain 3 blocks of water, 2 is full and 2 is empty.
+This puzzle has 4 bottles that can contain 3 blocks of water, 2 is full and 2 is empty.
 
 The same letters represent the same color.
 
@@ -76,6 +76,60 @@ Bottle is similar to stack, the last element is the water on the top of the bott
    ]
 }
 ```
+
+#### Solution
+
+Solution of the above puzzle solved by A* algorithm
+
+```
+abb
+baa
+
+
+--
+Visited 10 positions in 0.001 seconds
+Solved in 6 moves
+PS C:\Users\dnb02\Documents\GitHub\water-sort-puzzle-game> python astar.py ex.json --show-working
+abb
+baa
+
+
+--
+Visited 10 positions in 0.001 seconds
+Solved in 6 moves
+ab
+baa
+b
+
+--
+a
+baa
+b
+b
+--
+aa
+ba
+b
+b
+--
+aaa
+b
+b
+b
+--
+aaa
+
+bb
+b
+--
+aaa
+
+bbb
+
+--
+```
+
+
 
 
 
