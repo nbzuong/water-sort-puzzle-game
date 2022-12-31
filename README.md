@@ -7,7 +7,7 @@ Firstly, you have to install Python: https://www.python.org/downloads/
 
 In this project, we use argparse module to run in CLI.
 
-If your PC/Mac don't argparse module, you can install it via command:
+If your PC/Mac don't have argparse module, you can install it via command:
 
 ``` 
 pip install argparse 
