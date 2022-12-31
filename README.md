@@ -1,2 +1,2 @@
-# water-sort-puzzle-game
+# Water Sort Puzzle Solver
 AI project 2022.1
