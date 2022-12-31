@@ -17,7 +17,9 @@ pip install argparse
 #### The puzzle generator
 You can generate a new puzzle via command in this project directory by using:
 
-``` python generator.py xxx xxxx xxxxx.json ```
+``` 
+python generator.py xxx xxxx xxxxx.json 
+```
     
 - xxx is the number of bottles.
     
@@ -30,7 +32,9 @@ After generated, the puzzle is saved in the folder 'puzzles'.
 #### The solver
 You can solve a puzzle in 'puzzles' folder via command in this project directory by using:
 
-``` python xxx.py xxxx.json ```
+``` 
+python xxx.py xxxx.json 
+```
 
 - xxx is the name of method you want to use to solve the puzzle. Here we have:
     - astar.py is using A* search algorithm.
@@ -39,9 +43,11 @@ You can solve a puzzle in 'puzzles' folder via command in this project directory
 
 - xxxx is the json file name of the puzzle you want to solve.
 
-If you want to show the working process, use this instead:
+If you want to show the working process, use this via command line:
 
-``` python xxx.py xxxx.json --show-working ```
+``` 
+python xxx.py xxxx.json --show-working 
+```
 
 
 
