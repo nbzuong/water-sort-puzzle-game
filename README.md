@@ -27,6 +27,18 @@ You can generate a new puzzle via command in this project directory by using:
 
 After generated, the puzzle is saved in the folder 'puzzles'.
 
+#### The solver
+You can solve a puzzle in 'puzzles' folder via command in this project directory by using:
+
+``` python xxx.py xxxx.json ```
+
+- xxx is the name of method you want to use to solve the puzzle. Here we have:
+    - astar.py is using A* search algorithm.
+    - bfs.py is using Breadth-first search algorithm.
+    - dfs.py is using Depth-first search algorithm.
+
+
+
 
 
 
