@@ -1,7 +1,7 @@
 # Water Sort Puzzle Solver
-In this project, we use some basic AI knowledge to solve "Water Sort Puzzle".
+In this project, some basic AI knowledge are used to solve "Water Sort Puzzle".
 
-We use Python 3.10 to write this project.
+This project is written in Python 3.10.
 ### Requirements
 Firstly, you have to install Python: https://www.python.org/downloads/
 
