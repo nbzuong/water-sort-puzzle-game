@@ -12,6 +12,24 @@ If your PC/Mac don't have argparse module, you can install it via command:
 ``` 
 pip install argparse 
 ```
+### Introduction to important files and directories in the project
+``` generator.py     ``` : The puzzle generator.
+
+``` astar.py         ``` : The implementation of A* search.
+
+``` bfs.py           ``` : The implementation of Breadth-first search.
+
+``` dfs.py           ``` : The implementation of Depth-first search.
+
+``` \puzzles         ``` : The folder contains all the generated puzzles.
+
+``` \solutions\astar ``` : The folder contains solutions of  A* method. 
+
+``` \solutions\bfs   ``` : The folder contains solutions of BFS method.
+
+``` \solutions\dfs   ``` : The folder contains solutions of DFS method.
+
+
 ### Guide
 
 #### The puzzle generator
@@ -37,9 +55,9 @@ python xxx.py xxxx.json
 ```
 
 - xxx is the name of method you want to use to solve the puzzle. Here we have:
-    - astar.py is using A* search algorithm.
-    - bfs.py is using Breadth-first search algorithm.
-    - dfs.py is using Depth-first search algorithm.
+    - astar
+    - bfs
+    - dfs
 
 - xxxx is the json file name of the puzzle you want to solve.
 
