@@ -46,9 +46,11 @@ python generator.py xxx xxxx xxxxx.json
     
 - xxx is the number of bottles.
     
-- xxxx is the number of waters in one bottle.
+- xxxx is the number of waters in a filled bottle.
     
 - xxxxx is the name of json file in which we save the puzzle.
+
+Two empty bottle will be added to the puzzle.
 
 After generated, the puzzle is saved in the folder 'puzzles'.
 
