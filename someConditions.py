@@ -45,13 +45,6 @@ def isSolved(puzzle, bottleHeight=None):
             return False
     return True
 
-def printPuzzleToString(puzzle): 
-    # To print bottles.
-    lines = []
-    for bottle in puzzle:
-        lines.append(''.join(bottle))
-    return("\n".join(lines))
-
 def isMoveValid(bottleHeight, fromBottle, candidateBottle):
     # Move is valid if the source bottle isn't empty, the destination isn't full, 
     # and the water at the end of the source bottle is the same as the water at the end of the destination.
@@ -65,6 +58,13 @@ def isMoveValid(bottleHeight, fromBottle, candidateBottle):
             return False
         return True
     return fromBottle[-1] == candidateBottle[-1]
+
+def printPuzzleToString(puzzle): 
+    # To print bottles.
+    lines = []
+    for bottle in puzzle:
+        lines.append(''.join(bottle))
+    return("\n".join(lines))
 
 def puzzleToCanonicalString(puzzle):
     bottleStrings = []
