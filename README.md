@@ -2,6 +2,8 @@
 In this project, some basic AI knowledge are used to solve "Water Sort Puzzle".
 
 This project is written in Python 3.10.
+
+---
 ### Requirements
 Firstly, you have to install Python: https://www.python.org/downloads/
 
@@ -12,6 +14,7 @@ If your PC/Mac don't have argparse module, you can install it via command:
 ``` 
 pip install argparse 
 ```
+---
 ### Introduction to important files and directories in the project
 ``` someConditions.py ``` : The file contains some useful functions to help the solver.
 
@@ -31,6 +34,7 @@ pip install argparse
 
 ``` \solutions\dfs    ``` : The folder contains solutions of DFS method.
 
+---
 ### Guide
 
 #### The puzzle generator
@@ -67,7 +71,7 @@ If you want to show the working process, use:
 ``` 
 python xxx.py xxxx.json --show-working 
 ```
-
+---
 ### Example
 #### Puzzle 
 
