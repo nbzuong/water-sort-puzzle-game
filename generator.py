@@ -8,7 +8,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a random permutation of waters in bottles")
     parser.add_argument("colors", help="number of colors", type=int)
     parser.add_argument("height", help="height of bottles", type=int)
-    parser.add_argument("json", help="output filename (will be written in JSON format)")
+    parser.add_argument("json", help="output filename")
     args = parser.parse_args()
     if(args.colors < 2 or args.colors > 52):
         exit("Colors must be between 2-52")
