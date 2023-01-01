@@ -32,8 +32,7 @@ def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
                     if solved:
                         answer.append(someConditions.printPuzzleToString(puzzle2))
                         return True
-    # Two for loops loop through the puzzle and 
-    # set bottle and candidateBottle variables to the current bottle and the bottle to be compared.
+    # Two for loops loop through the puzzle and set bottle and candidateBottle variables to the current bottle and the bottle to be compared.
     # Then check if the move is valid using the isMoveValid function from someConditions.
     # If isMoveValid is true, create a deep copy of the puzzle, and remove the last element from the current bottle and adds it to the candidateBottle.
     # After that move, check if the puzzle is solved using the isSolved function from someConditions.
