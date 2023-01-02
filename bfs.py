@@ -3,6 +3,10 @@ import copy
 import time
 import someConditions
 
+import sys
+sys.setrecursionlimit(2500)
+# The more difficult the puzzle is, the more recursive steps it takes.
+# So we do this to make sure the recursion error will not appear when solve expert+ level puzzles.
 
 def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
     if bottleHeight is None: 
