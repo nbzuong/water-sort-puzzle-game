@@ -81,7 +81,7 @@ This puzzle has 4 bottles that can contain 3 blocks of water, 2 bottles are full
 
 The same letters represent the same color.
 
-Bottle here is similar to stack, the last element is the water on the top of the bottle.
+Bottle here is similar to a stack structure, the last element is the water on the top of the bottle.
 
 ```
 {
