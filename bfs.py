@@ -25,7 +25,7 @@ def solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
             if someConditions.isMoveValid(bottleHeight, bottle, candidateBottle):
                 puzzle2 = copy.deepcopy(puzzle)
                 puzzle2[j].append(puzzle2[i].pop())
-                if(someConditions.isSolved(puzzle2, bottleHeight)):
+                if(someConditions.isSolved(puzzle2)):
                     answer.append(someConditions.printPuzzleToString(puzzle2))
                     return True
                 if(someConditions.puzzleToCanonicalString(puzzle2) not in visitedPositions):
