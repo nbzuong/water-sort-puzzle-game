@@ -30,9 +30,8 @@ def isValidPuzzle(puzzle):
             return False
     return True
 
-def isSolved(puzzle, bottleHeight=None):
-    if bottleHeight is None:
-        bottleHeight = max(len(t) for t in puzzle)
+def isSolved(puzzle):
+    bottleHeight = max(len(t) for t in puzzle)
     for tube in puzzle:
         if(len(tube) == 0): 
             # There are 2 bottles must be empty when puzzle is solved.
