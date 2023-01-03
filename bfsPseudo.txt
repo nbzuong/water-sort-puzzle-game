@@ -1,0 +1,27 @@
+function solvePuzzle(puzzle, bottleHeight=None, visitedPositions=set(), answer=[]):
+    if the bottleHeight is not given then
+        bottleHeight <- the maximum length of the puzzle
+    add the puzzle (in canonical string form) to visitedPositions
+    create an empty queue
+    for each bottle in the puzzle do
+        for each other bottle in the puzzle do
+            if the bottles are the same then
+                skip this iteration
+            if moving water from the current bottle to the candidate bottle is a valid move then
+                make a deep copy of the puzzle
+                move water from the current bottle to the candidate bottle in the copy
+                if the copy puzzle is solved then
+                    add the copy puzzle to the answer list
+                    return True
+                if the copy puzzle (in canonical string form) has not been visited then
+                    add the copy puzzle to the queue
+                    add the copy puzzle (in canonical string form) to visitedPositions
+    while the queue is not empty do
+        the current puzzle = the first puzzle in the queue
+        remove the first puzzle from the queue
+        if the current puzzle is solved then
+            add the puzzle to the answer list
+            return True
+        else do
+            try solvePuzzle(with the current puzzle as input)
+    return False
